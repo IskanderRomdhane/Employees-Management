@@ -2,13 +2,7 @@ package com.Management.Employee_Management.Role;
 
 import com.Management.Employee_Management.User.User;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EntityListeners;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.Id;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -36,7 +30,7 @@ public class Role {
     private Integer id;
     @Column(unique = true)
     private String name;
-    @ManyToMany(mappedBy = "roles")
+    @OneToMany
     @JsonIgnore
     private List<User> user;
 
@@ -47,4 +41,8 @@ public class Role {
     @LastModifiedDate
     @Column(insertable = false)
     private LocalDateTime lastModifiedDate;
+
+    public void setUser(User user) {
+        this.user.add(user);
+    }
 }

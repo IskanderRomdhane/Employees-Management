@@ -11,7 +11,6 @@ import com.Management.Employee_Management.email.EmailTemplateName;
 import jakarta.mail.MessagingException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -40,16 +39,9 @@ public class AuthenticationService {
     private String activationUrl;
 
     public void register(RegistrationRequest request) throws MessagingException {
-        // Check if the email already exists
-        if (userRepository.existsByEmail(request.getEmail())) {
-            throw new IllegalArgumentException("Email is already in use: " + request.getEmail());
-        }
-
-        // Fetch the user role
         var userRole = roleRepository.findByName("USER")
+                // todo - better exception handling
                 .orElseThrow(() -> new IllegalStateException("ROLE USER was not initiated"));
-
-        // Create a new user
         var user = User.builder()
                 .firstname(request.getFirstname())
                 .lastname(request.getLastname())
@@ -57,26 +49,13 @@ public class AuthenticationService {
                 .password(passwordEncoder.encode(request.getPassword()))
                 .accountLocked(false)
                 .enabled(false)
-                .roles(List.of(userRole))
+                .roles(userRole)
                 .build();
-
-        // Save the user
-        try {
-            userRepository.save(user);
-        } catch (DataIntegrityViolationException e) {
-            throw new IllegalStateException("Error saving user: " + e.getMessage());
-        }
-
-        // Send validation email
-        try {
-            sendValidationEmail(user);
-        } catch (MessagingException e) {
-            throw new MessagingException("Failed to send validation email: " + e.getMessage());
-        }
+        userRepository.save(user);
+        sendValidationEmail(user);
     }
 
-
-    public AuthenticationResponse authenticate (AuthenticationRequest request) {
+    public AuthenticationResponse authenticate(AuthenticationRequest request) {
         var auth = authenticationManager.authenticate(
                 new UsernamePasswordAuthenticationToken(
                         request.getEmail(),
@@ -86,7 +65,7 @@ public class AuthenticationService {
 
         var claims = new HashMap<String, Object>();
         var user = ((User) auth.getPrincipal());
-        claims.put("fullName", user.Fullname());
+        claims.put("fullName", user.fullName());
 
         var jwtToken = jwtService.generateToken(claims, (User) auth.getPrincipal());
         return AuthenticationResponse.builder()
@@ -97,6 +76,7 @@ public class AuthenticationService {
     @Transactional
     public void activateAccount(String token) throws MessagingException {
         Token savedToken = tokenRepository.findByToken(token)
+                // todo exception has to be defined
                 .orElseThrow(() -> new RuntimeException("Invalid token"));
         if (LocalDateTime.now().isAfter(savedToken.getExpiresAt())) {
             sendValidationEmail(savedToken.getUser());
@@ -131,7 +111,7 @@ public class AuthenticationService {
 
         emailService.sendEmail(
                 user.getEmail(),
-                user.Fullname(),
+                user.fullName(),
                 EmailTemplateName.ACTIVATE_ACCOUNT,
                 activationUrl,
                 newToken,
