@@ -51,4 +51,22 @@ public class CongeService {
         }
         else {return ResponseEntity.notFound().build();}
     }
+
+    public ResponseEntity<String> getCongeStatus(Integer id) {
+        Optional<Conge> conge = congeRepository.findById(id);
+        if (conge.isPresent()) {
+            Conge foundConge = conge.get();
+            Boolean state = foundConge.getState();
+            if (state == null) {
+                return ResponseEntity.ok("Request is still being reviewed");
+            } else if (Boolean.TRUE.equals(state)) {
+                return ResponseEntity.ok("Request is accepted");
+            } else {
+                return ResponseEntity.ok("Request is refused");
+            }
+        } else {
+            return ResponseEntity.notFound().build();
+        }
+    }
+
 }

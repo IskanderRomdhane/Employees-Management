@@ -43,6 +43,7 @@ public class User implements UserDetails, Principal {
     @OneToOne(fetch = FetchType.LAZY)
     private Conge conge;
     private Integer soldeCongeByDays;
+
     @CreatedDate
     @Column(nullable = false , updatable = false)
     private LocalDateTime createdDate;
@@ -56,7 +57,7 @@ public class User implements UserDetails, Principal {
     }
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return Collections.singleton(new SimpleGrantedAuthority(this.roles.getName()));
+        return Collections.singleton(new SimpleGrantedAuthority("ROLE_" + this.roles.getName()));
     }
 
     @Override
