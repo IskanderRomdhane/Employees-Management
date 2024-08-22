@@ -28,7 +28,15 @@ spring:
         connectiontimeout: 5000
         timeout: 3000
         writetimeout: 5000
-
+  security:
+    oauth2:
+      resourceserver:
+        jwt:
+          issuer-uri: http://localhost:8080/realms/Skander
+          jwk-set-uri: http://localhost:8080/realms/Skander/protocol/openid-connect/certs
+          auth:
+            converter:
+              resource-id: backend-em
 application:
   security:
     jwt:
@@ -36,6 +44,7 @@ application:
       expiration: 86400000
       refresh-token:
         expiration: 604800000
+
   mailing:
     frontend:
       activation-url : http://localhost/activate-account

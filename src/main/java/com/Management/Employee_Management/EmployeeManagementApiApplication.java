@@ -1,7 +1,7 @@
 package com.Management.Employee_Management;
 
-import com.Management.Employee_Management.Role.Role;
-import com.Management.Employee_Management.Role.RoleRepository;
+import com.Management.Employee_Management.Authnetification.Role.Role;
+import com.Management.Employee_Management.Authnetification.Role.RoleRepository;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
