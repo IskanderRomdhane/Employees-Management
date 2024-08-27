@@ -15,25 +15,28 @@ import java.util.Optional;
 public class CongeService {
     private final UserRepository userRepository;
     private final CongeRepository congeRepository;
-    public ResponseEntity<Boolean> requestConge(Authentication connectedUser, rConge request) {
+    public ResponseEntity<String> requestConge(Authentication connectedUser, rConge request) {
         Optional<User> userOptional = userRepository.findByUsername(connectedUser.getName());
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
+            Optional<Conge> conge = congeRepository.findByUserUsername(user.getUsername());
+            if(conge.isEmpty()) {
+                Conge userConge = Conge.builder()
+                        .startDate(request.startDate())
+                        .endDate(request.endDate())
+                        .reason(request.reason())
+                        .user(user)
+                        .build();
 
-            Conge userConge = Conge.builder()
-                    .startDate(request.startDate())
-                    .endDate(request.endDate())
-                    .reason(request.reason())
-                    .user(user)
-                    .build();
+                congeRepository.save(userConge);
 
-            congeRepository.save(userConge);
+                user.setConge(userConge);
+                userRepository.save(user);
 
-            user.setConge(userConge);
-            userRepository.save(user);
-
-            return ResponseEntity.ok(true);
+                return ResponseEntity.ok("Request SAVED");
+            }
+            else {return ResponseEntity.ok("Request is already in progress");}
         } else {
             return ResponseEntity.notFound().build();
         }

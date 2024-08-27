@@ -23,7 +23,7 @@ public class CongeController {
     private final UserService userService;
     private rConge rConge;
     @PostMapping("/request-conge")
-    public ResponseEntity<Boolean> requestConge(
+    public ResponseEntity<String> requestConge(
             Authentication connectedUser,
             @RequestBody rConge request){
         return congeService.requestConge(connectedUser, request);

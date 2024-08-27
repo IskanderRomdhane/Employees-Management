@@ -4,48 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="567d24ec-f88e-4fec-852f-c80573905bb6" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.mvn/wrapper/maven-wrapper.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docker-compose.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/mvnw.cmd" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/.gitkeep" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Config/BeansConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Role/Role.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Role/RoleController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Role/RoleRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Role/RoleService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Role/nRole.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Security/JwtFilter.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Security/JwtService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Security/SecurityConfig.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Security/UserDetailsServiceImpl.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Services/EmployeeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/Services/ServicesController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/User/Token.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/User/TokenRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/User/User.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/User/UserRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/auth/AuthenticationController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/auth/AuthenticationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/auth/AuthenticationResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/auth/AuthenticationService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/auth/RegistrationRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/email/EmailService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/Authnetification/email/EmailTemplateName.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/EmployeeManagementApiApplication.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/GestionConge/Conge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/GestionConge/CongeController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/GestionConge/CongeRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/GestionConge/CongeService.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/Management/Employee_Management/GestionConge/rConge.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application-dev.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/templates/activate_account.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/com/Management/Employee_Management/EmployeeManagementApiApplicationTests.java" beforeDir="false" />
-    </list>
+    <list default="true" id="567d24ec-f88e-4fec-852f-c80573905bb6" name="Changes" comment="update" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -69,31 +28,31 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RequestMappingsPanelOrder0": "0",
-    "RequestMappingsPanelOrder1": "1",
-    "RequestMappingsPanelWidth0": "75",
-    "RequestMappingsPanelWidth1": "75",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "git-widget-placeholder": "master",
-    "ignore.virus.scanning.warn.message": "true",
-    "last_opened_file_path": "C:/Users/skander/Desktop/Employees-Management-final/Backend",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
+    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
+    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
+    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/skander/Desktop/Employees-Management-final/Backend&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;reference.settings.project.maven.repository.indices&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "DatabaseDriversLRU": [
-      "postgresql"
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;postgresql&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.Management.Employee_Management.Authnetification.Keycloak" />
@@ -121,7 +80,17 @@
       <workItem from="1724596330798" duration="25147000" />
       <workItem from="1724660354527" duration="82000" />
       <workItem from="1724660455519" duration="18000" />
+      <workItem from="1724662361968" duration="694000" />
     </task>
+    <task id="LOCAL-00001" summary="update">
+      <option name="closed" value="true" />
+      <created>1724662430295</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1724662430295</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -137,5 +106,9 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="update" />
+    <option name="LAST_COMMIT_MESSAGE" value="update" />
   </component>
 </project>
