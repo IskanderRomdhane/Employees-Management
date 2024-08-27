@@ -24,8 +24,7 @@ public class Conge {
     private LocalDate endDate;
     private String reason;
     private Boolean state;
-    @OneToOne
-    private User user;
+    private String username;
 
     public static long calculateDaysDifference(LocalDate startDate, LocalDate endDate) {
         return ChronoUnit.DAYS.between(startDate, endDate);

@@ -23,8 +23,8 @@ public class User  {
     @Id
     private String username;
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private Conge conge;
+    private Integer congeId;
+
     private Integer soldeConge;
 
     @Override

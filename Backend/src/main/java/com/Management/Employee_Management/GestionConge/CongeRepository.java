@@ -6,5 +6,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.Optional;
 
 public interface CongeRepository extends JpaRepository<Conge, Integer> {
-    Optional<Conge> findByUserUsername(String username);
+    Optional<Conge> findByUsername(String username);
 }

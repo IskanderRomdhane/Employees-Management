@@ -3,9 +3,11 @@ package com.Management.Employee_Management.GestionConge;
 import com.Management.Employee_Management.Authnetification.User.User;
 import com.Management.Employee_Management.Authnetification.User.UserRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.Authentication;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.time.LocalDate;
 import java.util.Optional;
@@ -20,18 +22,18 @@ public class CongeService {
 
         if (userOptional.isPresent()) {
             User user = userOptional.get();
-            Optional<Conge> conge = congeRepository.findByUserUsername(user.getUsername());
+            Optional<Conge> conge = congeRepository.findByUsername(user.getUsername());
             if(conge.isEmpty()) {
                 Conge userConge = Conge.builder()
                         .startDate(request.startDate())
                         .endDate(request.endDate())
                         .reason(request.reason())
-                        .user(user)
+                        .username(user.getUsername())
                         .build();
 
                 congeRepository.save(userConge);
 
-                user.setConge(userConge);
+                user.setCongeId(userConge.getId());
                 userRepository.save(user);
 
                 return ResponseEntity.ok("Request SAVED");
@@ -72,7 +74,7 @@ public class CongeService {
     }
 
     public ResponseEntity<String> getCongeStatus(Authentication connectedUser) {
-        Optional<Conge> conge = congeRepository.findByUserUsername(connectedUser.getName());
+        Optional<Conge> conge = congeRepository.findByUsername(connectedUser.getName());
         if (conge.isPresent()) {
             Conge foundConge = conge.get();
             Boolean state = foundConge.getState();
