@@ -26,11 +26,11 @@ const SoldeCongeApi = () => {
     };
 
     fetchDays();
-  }, [initialized, keycloak.token]); // effect runs when `initialized` or `keycloak.token` changes
+  }, [initialized, keycloak.token]);
 
   return (
     <div>
-      {error ? <div>Error: {error.message}</div> : <div>{days}</div>}
+      {error ? <div>Error: {error.message}</div> : <div>Sole Conge : {days}</div>}
     </div>
   );
 };

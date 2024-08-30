@@ -18,9 +18,7 @@ const DisplayAllConges = () => {
             },
           });
           console.log(response.data); 
-        
-          //const result = response.data.map ((conge) => );
-          
+          setConges(response.data);
         }
       } catch (error) {
         console.error('Error fetching conges:', error);
@@ -32,17 +30,23 @@ const DisplayAllConges = () => {
   }, [initialized, keycloak.token]);
 
   return (
-    <div>
+    <tbody>
       {error ? (
-        <div>Error: {error}</div>
+        <tr>
+          <td colSpan="6">Error: {error}</td>
+        </tr>
       ) : (
-        <ul>
-          {conges.map((conge, index) => (
-            <li key={index}>{JSON.stringify(conge)}</li>
-          ))}
-        </ul>
+        conges.map((conge) => (
+          <tr key={conge.id}>
+            <td className="border border-gray-400 px-4 py-2">{conge.startDate}</td>
+            <td className="border border-gray-400 px-4 py-2">{conge.endDate}</td>
+            <td className="border border-gray-400 px-4 py-2">{conge.reason}</td>
+            <td className="border border-gray-400 px-4 py-2">{conge.state}</td>
+            <td className="border border-gray-400 px-4 py-2">{conge.username}</td>
+          </tr>
+        ))
       )}
-    </div>
+    </tbody>
   );
 };
 
