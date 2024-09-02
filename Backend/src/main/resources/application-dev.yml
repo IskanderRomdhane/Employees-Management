@@ -35,7 +35,9 @@ spring:
           issuer-uri: http://localhost:9090/realms/Employees-Manager
 keycloak:
   server:
-    url: http://localhost:9090/auth
+    url: http://localhost:9090/
+  realm: Employees-Manager
+  resource: emp
   admin:
-    username: admin
-    password: admin
+    username: mohsen
+    password: 123

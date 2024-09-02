@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { useKeycloak } from '@react-keycloak/web';
-import { api } from '../Config/axiosRequestInterceptor'; // Adjust path as needed
+import { api } from '../Config/axiosRequestInterceptor';
 
 const RequestConge = (props) => {
   const { keycloak, initialized } = useKeycloak();

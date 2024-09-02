@@ -9,6 +9,8 @@ import PrivateRoute from './Components/PrivateRoute';
 import keycloak from './Config/keycloak';
 import { ReactKeycloakProvider } from '@react-keycloak/web';
 import axios from 'axios';
+import edituser from './pages/edituser';
+import CreateUser  from './pages/createUser';
 function App() {
   return (
     <ReactKeycloakProvider
@@ -22,6 +24,8 @@ function App() {
           <Route path='/' element={<Root />} />
           
           {/* Protected Routes */}
+          <Route path={'/profile'} element={<PrivateRoute component={edituser} allowedRoles={['USER','ADMIN']} />} />
+          <Route path={'/createuser'} element={<PrivateRoute component={CreateUser } allowedRoles={['ADMIN']} />} />
           <Route path='/user' element={<PrivateRoute component={User} allowedRoles={['USER']} />} />
           <Route path='/admin' element={<PrivateRoute component={Admin} allowedRoles={['ADMIN']} />} />
           {/* Unauthorized Route */}

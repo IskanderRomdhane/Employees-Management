@@ -33,11 +33,10 @@ public class CongeController {
     @PutMapping("/setStatus")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> setCongeState (
-            @RequestBody rConge request,
-            Authentication connectedUser
+            @RequestBody rConge rconge
     ) {
         System.out.println("working");
-        return congeService.setCongeState(request, connectedUser);
+        return congeService.setCongeState(rconge);
     }
     @GetMapping("/soldeconge")
     public ResponseEntity<Integer> soldeConge (

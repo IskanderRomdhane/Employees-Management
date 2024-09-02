@@ -9,6 +9,7 @@ public record rConge(
          LocalDate startDate,
          LocalDate endDate,
          String reason,
-         Boolean state
+         Boolean state,
+        String userId
 ) {
 }

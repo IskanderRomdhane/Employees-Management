@@ -25,7 +25,23 @@ const DisplayAllUser = () => {
     };
 
     displayUser();
-  }, [initialized, keycloak.token]);
+  }, [initialized, keycloak.token , ]);
+  const handleDelete = async (userId) => {
+    try {
+        const response = await axios.delete(
+            `http://localhost:8088/api/v1/keycloak/delete-user/${userId}`,
+            {
+                headers: {
+                    'Content-Type': 'application/json',
+                    Authorization: `Bearer ${keycloak.token}`,
+                },
+            }
+        );
+        console.log(response.data);
+    } catch (error) {
+        console.error('Error deleting user:', error.response ? error.response.data : error.message);
+    }
+};
 
   return (
     <tbody>
@@ -36,7 +52,7 @@ const DisplayAllUser = () => {
       ) : (
         user.map((key) => (
           <tr key={key.congeId}>
-            <td  className="border border-gray-400 px-4 py-2">{key.email}</td>
+            <td className="border border-gray-400 px-4 py-2 flex justify-between items-center">{key.email}<button className="ml-auto button_minus" onClick={() => handleDelete(key.username)}></button></td>
             <td   className="border border-gray-400 px-4 py-2">{key.firstname}</td>
             <td  className="border border-gray-400 px-4 py-2">{key.lastname}</td>
             <td  className="border border-gray-400 px-4 py-2">{key.fullName}</td>

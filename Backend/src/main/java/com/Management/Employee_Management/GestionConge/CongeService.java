@@ -43,21 +43,22 @@ public class CongeService {
             return ResponseEntity.notFound().build();
         }
     }
-    public ResponseEntity<String> setCongeState (rConge request , Authentication connectedUser){
-        Optional<Conge> conge = congeRepository.findById(request.id());
-        Optional<User> user = userRepository.findByUsername(connectedUser.getName());
-        if(conge.isPresent() && user.isPresent()){
+    public ResponseEntity<String> setCongeState (rConge rconge){
+
+        Optional<User> user = userRepository.findByUsername(rconge.userId());
+        if(user.isPresent()){
             User foundUser = user.get();
+            Optional<Conge> conge = congeRepository.findByUsername(foundUser.getUsername());
             Conge foundconge = conge.get();
-            foundconge.setState(request.state());
+            foundconge.setState(rconge.state());
             if (foundUser.getSoldeConge() > foundconge.calculateDaysDifference(foundconge.getStartDate(),foundconge.getEndDate())) {
-                foundconge.setState(request.state());
+                foundconge.setState(foundconge.getState());
                 congeRepository.save(foundconge);
                 foundUser.setSoldeConge((int) (foundUser.getSoldeConge()-foundconge.calculateDaysDifference(foundconge.getStartDate(),foundconge.getEndDate())));
                 userRepository.save(foundUser);
                 return ResponseEntity.ok("conge Accepted");
             }
-            else {return ResponseEntity.ok("conge Refused");}
+            else {return ResponseEntity.ok("Solde conge est insuffisant");}
         }
         else{return ResponseEntity.notFound().build();}
     }

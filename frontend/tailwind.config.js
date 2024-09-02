@@ -21,7 +21,8 @@ export default {
       fontFamily: {
         palanquin: ['Palanquin', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
-        Anton: ['Anton', 'sans-serif']
+        Anton: ['Anton', 'sans-serif'],
+        kanit : ['kanit' , 'sans-serif']
       },
       colors: {
         'primary': "#ECEEFF",
