@@ -32,11 +32,12 @@ const Admin = () => {
       {/* Main Content */}
       <div className="p-6 space-y-8">
         {/* Set Conge State */}
-        <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
+        <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6 ">
+        <h2 className="text-xl font-semibold mb-4 text-gray-800 m-2">Set Conge State</h2>
         <input 
             type="" 
             id="state"
-            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-[350px]"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-[350px] m-2"
             value={userid}
             onChange={idHandler}
             placeholder="Enter userId"
@@ -45,7 +46,7 @@ const Admin = () => {
           <input 
             type="text" 
             id="state"
-            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-[350px]"
+            className="p-3 border border-gray-300 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 w-[350px] m-2"
             value={state || ''}
             onChange={stateHandler}
             placeholder="Enter State"
@@ -93,14 +94,7 @@ const Admin = () => {
         </table>
           </div>
         </section>
-        <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-        <h2 className="text-xl font-semibold mb-4 text-gray-800">Update Users</h2>
-        <button 
-            className='flex items-center justify-center rounded-full bg-red-500 text-white px-4 py-1 text-sm' 
-            onClick={handleNavigate}>
-            Create User
-        </button>
-        </section>
+      
 
       </div>
     </div>

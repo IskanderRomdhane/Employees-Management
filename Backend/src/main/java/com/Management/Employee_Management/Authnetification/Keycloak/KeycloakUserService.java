@@ -6,11 +6,13 @@ import org.keycloak.admin.client.Keycloak;
 import org.keycloak.admin.client.KeycloakBuilder;
 import org.keycloak.admin.client.resource.UserResource;
 import org.keycloak.admin.client.resource.UsersResource;
+import org.keycloak.representations.idm.RoleRepresentation;
 import org.keycloak.representations.idm.UserRepresentation;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
 
 import javax.ws.rs.core.Response;
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 
@@ -65,27 +67,28 @@ public class KeycloakUserService {
         return response;
     }
 
-    /* Get User by ID
+    // Get User by ID
     public UserRepresentation getUserById(String userId) {
         return keycloak.realm(realm).users().get(userId).toRepresentation();
-    }*/
+    }
 
     // Update User
     public void updateUser(String userId, UserRepresentation user) {
-        keycloak.realm(realm).users().get(userId).update(user);
-        Optional<User> bdUser = userRepository.findByUsername(user.getId());
-
-        if (bdUser.isPresent()){
-            User savedUser = User.builder()
-                    .soldeConge(30)
-                    .firstname(user.getFirstName())
-                    .email(user.getEmail())
-                    .username(user.getServiceAccountClientId())
-                    .lastname(user.getLastName())
-                    .build();
-            userRepository.save(savedUser);
+        try {
+            keycloak.realm(realm).users().get(userId).update(user);
+            Optional<User> bdUser = userRepository.findByUsername(user.getId());
+            if (bdUser.isPresent()){
+                User foundUser = bdUser.get();
+                foundUser.setLastname(user.getLastName());
+                foundUser.setFirstname(user.getFirstName());
+                foundUser.setEmail(user.getEmail());
+                userRepository.save(foundUser);
+            }
+        } catch (Exception e) {
+            throw new RuntimeException("Failed to update user", e);
         }
     }
+
 
     // Delete User
     public void deleteUser(String userId) {

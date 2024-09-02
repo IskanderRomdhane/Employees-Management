@@ -3,6 +3,7 @@ package com.Management.Employee_Management.Authnetification.Keycloak;
 import com.Management.Employee_Management.Authnetification.User.User;
 import com.Management.Employee_Management.Authnetification.User.UserRepository;
 import org.keycloak.representations.idm.UserRepresentation;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
@@ -33,28 +34,37 @@ public class KeycloakUserController {
     }
 
 
-   /* @GetMapping("/{id}")
+    @GetMapping("/get-user/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<UserRepresentation> getUserById(@PathVariable String id) {
         UserRepresentation user = keycloakUserService.getUserById(id);
         return ResponseEntity.ok(user);
-    }*/
-
-    @PutMapping("/{id}")
-    @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody UserRepresentation user) {
-        keycloakUserService.updateUser(id, user);
-        return ResponseEntity.ok("User updated successfully");
     }
 
+    @PutMapping("update-user/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<String> updateUser(@PathVariable String id, @RequestBody UserRepresentation user) {
+        try {
+            keycloakUserService.updateUser(id, user);
+            return ResponseEntity.ok("User updated successfully");
+        } catch (Exception e) {
+            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body("Failed to update user: " + e.getMessage());
+        }
+    }
+
+
     @DeleteMapping("/delete-user/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<String> deleteUser(@PathVariable String id) {
         keycloakUserService.deleteUser(id);
         return ResponseEntity.ok("User deleted successfully");
     }
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserRepresentation>> listAllUsers() {
         List<UserRepresentation> users = keycloakUserService.listAllUsers();
         return ResponseEntity.ok(users);
     }
+
 }

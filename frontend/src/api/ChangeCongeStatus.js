@@ -36,7 +36,7 @@ const ChangeCongeStatus = (props) => { // Destructure props
     return (
         <div>
         <button 
-            className='flex items-center justify-center rounded-full bg-red-500 text-white px-4 py-1 text-sm' 
+            className='flex items-center justify-center rounded-full bg-red-500 text-white px-4 py-1 text-sm m-2' 
             onClick={submitState}
         >
             Submit
