@@ -1,6 +1,7 @@
 import { Disclosure, DisclosureButton, DisclosurePanel, Menu, MenuButton, MenuItem, MenuItems } from '@headlessui/react'
 import { Bars3Icon, BellIcon, XMarkIcon } from '@heroicons/react/24/outline'
 import userdefault from '../assests/User/userdefault.png'
+import { useKeycloak } from '@react-keycloak/web'
 const navigation = [
   { name: 'Dashboard', href: '#', current: true },
 ]
@@ -10,6 +11,21 @@ function classNames(...classes) {
 }
 
 export default function Example() {
+  const {keycloak , initialized} = useKeycloak();
+  const handleLogout = () => {
+    if (keycloak) {
+      const logoutUrl = "http://localhost:9090/realms/Employees-Manager/protocol/openid-connect/logout ";
+      keycloak.logout({
+        redirectUri: window.location.origin
+      }).then(() => {
+        keycloak.clearToken();
+        localStorage.clear();
+        sessionStorage.clear();
+        window.location.href = logoutUrl;  // Redirect to the Keycloak logout URL
+      });
+    }
+  };
+  
   return (
     <Disclosure as="nav" className="bg-gray-800">
       <div className="mx-auto max-w-7xl px-2 sm:px-6 lg:px-8">
@@ -87,7 +103,7 @@ export default function Example() {
                   </a>
                 </MenuItem>
                 <MenuItem>
-                  <a href="#" className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
+                  <a href='#' onClick={handleLogout} className="block px-4 py-2 text-sm text-gray-700 data-[focus]:bg-gray-100">
                     Sign out
                   </a>
                 </MenuItem>
