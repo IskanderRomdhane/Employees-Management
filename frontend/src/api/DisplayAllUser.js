@@ -44,10 +44,7 @@ const DisplayAllUser = () => {
                 user.map((key) => (
                     <tr key={key.congeId}>
                         <td className="border border-gray-400 px-4 py-2 flex justify-between items-center">
-                            <span
-                                onClick={() => handleEditClick(key.username)}
-                                className="cursor-pointer text-blue-500"
-                            >
+                            <span onClick={() => handleEditClick(key.username)} className="cursor-pointer text-blue-500">
                                 {key.email}
                             </span>
                             <Modal username={key.username} />

@@ -77,7 +77,7 @@ const CreateUser = (props) => {
                                         <input
                                             type="text"
                                             value={username}
-                                            className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                            className="mt-2 p-4 w-full border-2 rounded-lg bg-gray-200 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                             placeholder="First Name"
                                             readOnly
                                         />
@@ -114,9 +114,11 @@ const CreateUser = (props) => {
                                         <input
                                             type="email"
                                             value={email}
-                                            className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                            className="mt-2 p-4 w-full border-2 rounded-lg bg-gray-200 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                             placeholder="you@example.com"
                                             onChange={HandleEmail}
+                                            readOnly
+                                            
                                         />
                                     </div>
                                     <div className="w-full">
