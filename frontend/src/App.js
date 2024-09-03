@@ -24,8 +24,9 @@ function App() {
           <Route path='/' element={<Root />} />
           
           {/* Protected Routes */}
-          <Route path={'/profile/:username'} element={<PrivateRoute component={edituser} allowedRoles={['USER','ADMIN']} />} />
+          <Route path={'/editprofile/:username'} element={<PrivateRoute component={edituser} allowedRoles={['USER','ADMIN']} />} />
           <Route path={'/createuser'} element={<PrivateRoute component={CreateUser } allowedRoles={['ADMIN']} />} />
+          <Route path={'/profile'} element={<PrivateRoute component={CreateUser } allowedRoles={['ADMIN','USER']} />} />
           <Route path='/user' element={<PrivateRoute component={User} allowedRoles={['USER']} />} />
           <Route path='/admin' element={<PrivateRoute component={Admin} allowedRoles={['ADMIN']} />} />
           {/* Unauthorized Route */}

@@ -31,7 +31,7 @@ const DisplayAllUser = () => {
     }, [initialized, keycloak.token]);
 
     const handleEditClick = (username) => {
-        navigate(`/profile/${username}`);
+        navigate(`/editprofile/${username}`);
     };
 
     return (
