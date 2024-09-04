@@ -234,3 +234,78 @@
   font-weight: 900;
   font-style: italic;
 }
+.container {
+  display: flex;
+}
+
+.sidebar {
+  background: #000;
+  color: #fff;
+  height: 100vh;
+  width: 50px; /* Default collapsed width */
+  transition: width 0.5s; /* Smooth transition for width */
+}
+
+.top_section {
+  display: flex;
+  align-items: center;
+  padding: 20px 15px;
+  transition: margin-left 0.5s; /* Smooth transition for margin-left */
+}
+
+.logo {
+  font-size: 30px;
+  display: none; /* Hide logo by default */
+}
+
+.bars {
+  display: flex;
+  font-size: 25px;
+  margin-left: 0; /* No margin when collapsed */
+  transition: margin-left 0.5s; /* Smooth transition for margin-left */
+}
+
+.link {
+  display: flex;
+  color: #fff;
+  padding: 10px 15px;
+  gap: 15px;
+  align-items: center; /* Center items vertically */
+  text-decoration: none; /* Remove underline from links */
+  transition: background 0.5s, color 0.5s; /* Smooth transition for background and color */
+}
+
+.link:hover {
+  background: lightskyblue;
+  color: #000;
+}
+
+.active {
+  background: lightskyblue;
+  color: #000;
+}
+
+.icon, .link_text {
+  font-size: 20px;
+}
+
+/* Show the logo and adjust margin when sidebar is open */
+.sidebar.open {
+  width: 200px;
+}
+
+.sidebar.open .logo {
+  display: block;
+}
+
+.sidebar.open .bars {
+  margin-left: 50px;
+}
+
+.sidebar.open .link_text {
+  display: block;
+}
+
+.sidebar .link_text {
+  display: none; /* Hide link text by default */
+}
