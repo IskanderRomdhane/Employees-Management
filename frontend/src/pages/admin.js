@@ -4,6 +4,7 @@ import DisplayAllUser from '../api/DisplayAllUser';
 import UserNavbar from '../Components/UserNavbar';
 import ChangeCongeStatus from '../api/ChangeCongeStatus';
 import { useNavigate } from 'react-router-dom'; 
+import GetRoles from '../api/GetRoles';
 const Admin = () => {
   const [userid, setId] = useState('');
   const [state, setState] = useState(null);
@@ -56,20 +57,21 @@ const Admin = () => {
 
         {/* Display All Users */}
         <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">All Users</h2>
-          <button class='button_plus' onClick={handleNavigate}></button>
-          <div className="overflow-x-auto">
-          <table className='table-auto w-full border-collapse border border-gray-400'>
-          <thead>
-            <tr>
-              <th className="border border-gray-400 px-4 py-2">Email</th>
-              <th className="border border-gray-400 px-4 py-2">First Name</th>
-              <th className="border border-gray-400 px-4 py-2">Last Name</th>
-              <th className="border border-gray-400 px-4 py-2">Full Name</th>
-              <th className="border border-gray-400 px-4 py-2">Solde Conge</th>
-              <th className="border border-gray-400 px-4 py-2">Conge ID</th>
-            </tr>
-          </thead>
+          <div className='flex items-start gap-8 align-middle pb-3'>
+          <h2 className="text-xl font-semibold mb-4 text-gray-800">User List</h2>
+          <button class='bg-blue-600 text-white rounded-sm w-20 h-8' onClick={handleNavigate}>Add user</button>
+          </div>
+            <div class='overflow-x-auto w-full'>
+            <table class='mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden'>
+                <thead class="bg-gray-900">
+                    <tr class="text-white text-left">
+                        <th class="font-semibold text-sm uppercase px-6 py-4"> Name </th>
+                        <th class="font-semibold text-sm uppercase px-6 py-4"> Role </th>
+                        <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> status </th>
+                        <th class="font-semibold text-sm uppercase px-6 py-4 text-center"> Solde Conge </th>
+                        <th class="font-semibold text-sm uppercase px-6 py-4"> </th>
+                    </tr>
+                </thead>
           <DisplayAllUser />
         </table>
           </div>
@@ -77,6 +79,7 @@ const Admin = () => {
       
 
       </div>
+      
     </div>
   );
 };

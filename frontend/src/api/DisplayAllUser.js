@@ -3,7 +3,8 @@ import axios from 'axios';
 import { useKeycloak } from '@react-keycloak/web';
 import { useNavigate } from 'react-router-dom';
 import Modal from '../Components/Modal';
-
+import userdefault from '../assests/User/userdefault.png'
+import GetRoles from './GetRoles';
 const DisplayAllUser = () => {
     const [user, setUser] = useState([]);
     const [error, setError] = useState(null);
@@ -35,25 +36,30 @@ const DisplayAllUser = () => {
     };
 
     return (
-        <tbody>
+        <tbody class="divide-y divide-gray-200">
             {error ? (
                 <tr>
                     <td colSpan="6">Error: {error}</td>
                 </tr>
             ) : (
-                user.map((key) => (
-                    <tr key={key.congeId}>
-                        <td className="border border-gray-400 px-4 py-2 flex justify-between items-center">
-                            <span onClick={() => handleEditClick(key.username)} className="cursor-pointer text-blue-500">
-                                {key.email}
-                            </span>
-                            <Modal username={key.username} />
+                user.map((key) => (                
+
+                    <tr key={key.username}>
+                        <td class="px-6 py-4">
+                            <div class="flex items-center space-x-3">
+                                <div class="inline-flex w-10 h-10"> <img class='w-10 h-10 object-cover rounded-full' alt='User avatar' src={userdefault}/> </div>
+                                <div>
+                                    <p> {key.fullName} </p>
+                                    <p class="text-gray-500 text-sm font-semibold tracking-wide"> {key.email} </p>
+                                </div>
+                            </div>
                         </td>
-                        <td className="border border-gray-400 px-4 py-2">{key.firstname}</td>
-                        <td className="border border-gray-400 px-4 py-2">{key.lastname}</td>
-                        <td className="border border-gray-400 px-4 py-2">{key.fullName}</td>
-                        <td className="border border-gray-400 px-4 py-2">{key.soldeConge}</td>
-                        <td className="border border-gray-400 px-4 py-2">{key.congeId}</td>
+                        <td class="px-6 py-4">
+                            <p class="text-gray-500 text-sm font-semibold tracking-wide"> <GetRoles userid = {key.username}/></p>
+                        </td>
+                        <td class="px-6 py-4 text-center"> <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Active </span> </td>
+                        <td class="px-6 py-4 text-center"> {key.soldeConge} </td>
+                        <td class="px-6 py-4 text-center"> <a onClick={() => handleEditClick(key.username)} class="text-purple-800 hover:underline">Edit</a> </td>
                     </tr>
                 ))
             )}

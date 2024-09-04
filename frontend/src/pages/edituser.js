@@ -3,7 +3,7 @@ import Euser from '../api/Euser';
 import { useKeycloak } from '@react-keycloak/web';
 import axios from 'axios';
 import { useParams } from 'react-router-dom';
-
+import GetRoles from '../api/GetRoles';
 const CreateUser = (props) => {
     const [firstname, setFirstName] = useState('');
     const [lastname, setLastName] = useState('');
@@ -37,6 +37,7 @@ const CreateUser = (props) => {
         else{setCrole(role);}
     }
 
+
     useEffect(() => {
         const getUser = async () => {
             try {
@@ -47,7 +48,6 @@ const CreateUser = (props) => {
                             Authorization: `Bearer ${keycloak.token}`,
                         },
                     });
-                    console.log(response.data);
                     setData(response.data);
                     setFirstName(response.data.firstName);
                     setLastName(response.data.lastName);
@@ -58,6 +58,26 @@ const CreateUser = (props) => {
                 setError(error);
             }
         };
+        const fetchRoles = async () => {
+            try {
+                if (initialized && keycloak.token) {
+                    const response = await axios.get(
+                        `http://localhost:9090/admin/realms/${keycloak.realm}/users/${username}/role-mappings/clients/ef0964d4-e53f-4ee3-9c36-42d5ad6c2346`,
+                        {
+                            headers: {
+                                Authorization: `Bearer ${keycloak.token}`,
+                            },
+                        }
+                    );
+                    console.log(response.data);
+                    const rolesString = response.data.map(role => role.name).join(", ");
+                    setCrole(rolesString);
+                }
+            } catch (error) {
+                console.error("Failed to fetch roles:", error);
+            }
+        };
+        fetchRoles();
         getUser();
     }, [initialized, keycloak, username]);
 
@@ -78,7 +98,7 @@ const CreateUser = (props) => {
                                             type="text"
                                             value={username}
                                             className="mt-2 p-4 w-full border-2 rounded-lg bg-gray-200 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
-                                            placeholder="First Name"
+                                            placeholder=""
                                             readOnly
                                         />
                                     </div>
@@ -126,7 +146,7 @@ const CreateUser = (props) => {
                                         <input
                                             type="text"
                                             value={cRole}
-                                            className="mt-2 p-4 w-full border-2 rounded-lg dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
+                                            className="mt-2 p-4 w-full border-2 rounded-lg bg-gray-200 dark:text-gray-200 dark:border-gray-600 dark:bg-gray-800"
                                             placeholder=""
                                             readOnly
                                         />

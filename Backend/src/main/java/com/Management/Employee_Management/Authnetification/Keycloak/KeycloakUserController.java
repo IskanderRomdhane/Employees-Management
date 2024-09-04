@@ -9,6 +9,7 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.ws.rs.core.Response;
+import java.util.Collections;
 import java.util.List;
 @RestController
 @RequestMapping("/keycloak")
@@ -60,11 +61,12 @@ public class KeycloakUserController {
         return ResponseEntity.ok("User deleted successfully");
     }
 
-    @GetMapping
+    @GetMapping("/all-users")
     @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<UserRepresentation>> listAllUsers() {
         List<UserRepresentation> users = keycloakUserService.listAllUsers();
         return ResponseEntity.ok(users);
     }
+
 
 }

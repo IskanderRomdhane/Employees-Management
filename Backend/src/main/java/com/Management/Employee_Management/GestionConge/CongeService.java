@@ -50,17 +50,21 @@ public class CongeService {
             User foundUser = user.get();
             Optional<Conge> conge = congeRepository.findByUsername(foundUser.getUsername());
             Conge foundconge = conge.get();
-            foundconge.setState(rconge.state());
-            System.out.println("Found user Id :" + foundUser.getUsername());
-            System.out.println("Found conge Id :" + foundconge.getId());
-            System.out.println("Found conge State :" + foundconge.getState());
-           // if (foundUser.getSoldeConge() > foundconge.calculateDaysDifference(foundconge.getStartDate(),foundconge.getEndDate())) {
-                congeRepository.save(foundconge);
-                foundUser.setSoldeConge((int) (foundUser.getSoldeConge()-foundconge.calculateDaysDifference(foundconge.getStartDate(),foundconge.getEndDate())));
-                userRepository.save(foundUser);
-                return ResponseEntity.ok("conge Accepted");
-            //}
-           // else {return ResponseEntity.ok("Solde conge est insuffisant");}
+            if (foundconge.getState() == null) {
+                foundconge.setState(rconge.state());
+                System.out.println("Found user Id :" + foundUser.getUsername());
+                System.out.println("Found conge Id :" + foundconge.getId());
+                System.out.println("Found conge State :" + foundconge.getState());
+                if (foundUser.getSoldeConge() > foundconge.calculateDaysDifference(foundconge.getStartDate(), foundconge.getEndDate())) {
+                    congeRepository.save(foundconge);
+                    foundUser.setSoldeConge((int) (foundUser.getSoldeConge() - foundconge.calculateDaysDifference(foundconge.getStartDate(), foundconge.getEndDate())));
+                    userRepository.save(foundUser);
+                    return ResponseEntity.ok("conge Accepted");
+                } else {
+                    return ResponseEntity.ok("Solde conge est insuffisant");
+                }
+            }
+            else {return ResponseEntity.ok("Conge state already changed");}
         }
         else{return ResponseEntity.notFound().build();}
     }
