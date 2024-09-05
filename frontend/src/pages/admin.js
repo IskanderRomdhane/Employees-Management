@@ -1,16 +1,13 @@
 import React, { useState } from 'react';
-import DisplayAllConges from '../api/DispalyAllConges'; 
-import DisplayAllUser from '../api/DisplayAllUser'; 
-import { useNavigate } from 'react-router-dom'; 
-import Sidebar from '../Components/Sidebar';
-import { ChevronRight, ChevronLeft, Menu } from 'lucide-react'; // Import Menu icon
+import { useNavigate } from 'react-router-dom';
+import { ChevronRight, ChevronLeft, Menu, Users, Calendar, PlusCircle, FileText } from 'lucide-react'; // Import icons
 
-const Admin = () => {
+const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
   const navigate = useNavigate();
 
-  const handleNavigate = () => {
-    navigate("/createuser");
+  const handleNavigate = (path) => {
+    navigate(path);
   };
 
   const toggleSidebar = () => {
@@ -18,60 +15,62 @@ const Admin = () => {
   };
 
   return (
-    <div className="flex h-screen bg-gray-100 overflow-hidden">
-    {/*
+    <div className="flex flex-col h-screen">
+      {/* Navigation Bar */}
+      <header className="bg-gray-800 text-white flex items-center justify-between p-4 shadow-md">
+        <div className="flex items-center">
+          <h1 className="text-2xl font-bold ml-4">Admin Dashboard</h1>
+        </div>
+        <div>
+          <button
+            onClick={() => handleNavigate('/createuser')}
+            className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 flex items-center"
+          >
+            <PlusCircle className="w-5 h-5 mr-2" />
+            Create User
+          </button>
+        </div>
+      </header>
 
-      <div
-        className={`flex-1 p-6 space-y-8 transition-all duration-300 ease-in-out ${
-          isSidebarOpen ? 'ml-[350px]' : 'ml-[80px]'
-        }`}
-      >
+      {/* Main Content */}
+      <div className="flex flex-1 overflow-hidden bg-gray-100">
+        <div className="flex-1 p-6">
+          <h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Users Section */}
+            <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
+              <Users className="w-12 h-12 text-teal-500 mr-4" />
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2">Users</h3>
+                <button
+                  onClick={() => handleNavigate('/users')}
+                  className="bg-teal-500 text-white px-4 py-2 rounded hover:bg-teal-600 flex items-center"
+                >
+                  <Users className="w-5 h-5 mr-2" />
+                  View Users
+                </button>
+              </div>
+            </div>
 
-        <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6 w-full">
-          <h2 className="text-xl font-semibold mb-4 text-gray-800">All Conges</h2>
-          <div className="overflow-x-auto">
-            <table className="table-auto w-full border-collapse border border-gray-400">
-              <thead>
-                <tr>
-                  <th className="border border-gray-400 px-4 py-2">Start Date</th>
-                  <th className="border border-gray-400 px-4 py-2">End Date</th>
-                  <th className="border border-gray-400 px-4 py-2">Reason</th>
-                  <th className="border border-gray-400 px-4 py-2">State</th>
-                  <th className="border border-gray-400 px-4 py-2">Username</th>
-                  <th className="border border-gray-400 px-4 py-2">Actions</th>
-                </tr>
-              </thead>
-              <DisplayAllConges />
-            </table>
+            {/* Conges Section */}
+            <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
+              <Calendar className="w-12 h-12 text-yellow-500 mr-4" />
+              <div className="flex-1">
+                <h3 className="text-lg font-semibold mb-2">Conges</h3>
+                <button
+                  onClick={() => handleNavigate('/conges')}
+                  className="bg-yellow-500 text-white px-4 py-2 rounded hover:bg-yellow-600 flex items-center"
+                >
+                  <Calendar className="w-5 h-5 mr-2" />
+                  View Conges
+                </button>
+              </div>
+            </div>
           </div>
-        </section>
-
-
-        <section className="bg-white rounded-lg shadow-md border border-gray-200 p-6">
-          <div className="flex items-center gap-8 pb-3">
-            <h2 className="text-xl font-semibold mb-4 text-gray-800">User List</h2>
-            <button className="bg-blue-600 text-white rounded-sm w-20 h-8" onClick={handleNavigate}>Add User</button>
-          </div>
-          <div className="overflow-x-auto w-full">
-            <table className="mx-auto w-full whitespace-nowrap rounded-lg bg-white divide-y divide-gray-300 overflow-hidden">
-              <thead className="bg-gray-900">
-                <tr className="text-white text-left">
-                  <th className="font-semibold text-sm uppercase px-6 py-4">Name</th>
-                  <th className="font-semibold text-sm uppercase px-6 py-4">Role</th>
-                  <th className="font-semibold text-sm uppercase px-6 py-4 text-center">Status</th>
-                  <th className="font-semibold text-sm uppercase px-6 py-4 text-center">Solde Conge</th>
-                  <th className="font-semibold text-sm uppercase px-6 py-4">Actions</th>
-                </tr>
-              </thead>
-              <DisplayAllUser />
-            </table>
-          </div>
-        </section>
+        </div>
       </div>
-   
-      */}
-       </div>
+    </div>
   );
 };
 
-export default Admin;
+export default AdminDashboard;

@@ -9,7 +9,7 @@ const Login = () => {
   useEffect(() => {
     const handleLogin = async () => {
       if (!initialized) {
-        return; // Keycloak is not initialized yet
+        return;
       }
 
       try {
@@ -22,10 +22,10 @@ const Login = () => {
           } else if (roles.includes('USER')) {
             window.location.href = '/user';
           } else {
-            window.location.href = '/unauthorized'; // Redirect if no roles match
+            window.location.href = '/unauthorized'; 
           }
         } else {
-          keycloak.login(); // Redirect to login if not authenticated
+          keycloak.login(); 
         }
       } catch (err) {}
     };

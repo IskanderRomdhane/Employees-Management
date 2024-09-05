@@ -66,13 +66,18 @@ const DisplayAllConges = () => {
             <td className="  px-4 py-2">{conge.startDate}</td>
             <td className=" px-4 py-2">{conge.endDate}</td>
             <td className=" text-gray-500 text-sm font-semibold tracking-wide px-4 py-2">{conge.reason}</td>
-            <td className="  px-4 py-2">{conge.state ? <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Accepted </span> : <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Refused </span> }</td>
+            <td className="  px-4 py-2">{conge.state ? <span class="text-white text-sm w-1/3 pb-1 bg-green-600 font-semibold px-2 rounded-full"> Accepted </span> : 
+            (conge.state === false ? <span class="text-white text-sm w-1/3 pb-1 bg-red-600 font-semibold px-2 rounded-full"> Refused </span> : 
+              <span class="text-white text-sm w-1/3 pb-1 bg-orange-600 font-semibold px-2 rounded-full"> In progress </span>
+             )}</td>
             <td className="  px-4 py-2">{conge.username}</td>
             <td className=" px-4 py-2">{
-              <>
+              (conge.state === null ? <>
               <button onClick={() => handleCongeChange(conge.username,true)} className='rounded-lg bg-green-600 px-2 mr-2 text-white'>accept</button>
               <button onClick={() => handleCongeChange(conge.username,false)} className='rounded-lg bg-red-600 px-2'>refuse</button>
+              
               </>
+              : <div></div>)
               }</td>
           </tr>
         ))
