@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
 import Login from './pages/login';
 import User from './pages/user';
-import Root from './pages/root';
+import Root from './pages/root/root';
 import Admin from './pages/admin';
 import Unauthorized from './pages/unauthorazied';
 import PrivateRoute from './Components/PrivateRoute';

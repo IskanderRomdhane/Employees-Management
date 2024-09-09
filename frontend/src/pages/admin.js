@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { ChevronRight, ChevronLeft, Menu, Users, Calendar, PlusCircle, FileText } from 'lucide-react'; // Import icons
+import {Users, Calendar, PlusCircle } from 'lucide-react'; 
 
 const AdminDashboard = () => {
   const [isSidebarOpen, setIsSidebarOpen] = useState(true);
@@ -37,7 +37,6 @@ const AdminDashboard = () => {
         <div className="flex-1 p-6">
           <h2 className="text-xl font-semibold mb-4">Dashboard Overview</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Users Section */}
             <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
               <Users className="w-12 h-12 text-teal-500 mr-4" />
               <div className="flex-1">
@@ -52,7 +51,6 @@ const AdminDashboard = () => {
               </div>
             </div>
 
-            {/* Conges Section */}
             <div className="bg-white p-6 rounded-lg shadow-md flex items-center">
               <Calendar className="w-12 h-12 text-yellow-500 mr-4" />
               <div className="flex-1">
