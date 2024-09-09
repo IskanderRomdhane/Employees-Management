@@ -80,7 +80,7 @@ const Root = () => {
         <h3 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-center mb-6">
           Key <span className="text-coral-red">Features</span>
         </h3>
-        <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10 max-w-6xl mx-auto px-4">
+        <div className="flex flex-wrap justify-center items-center gap-6 lg:gap-10 max-w-12xl mx-auto px-4">
           <div className="flex flex-col items-center text-center w-full sm:w-80 lg:w-72 p-6 bg-white shadow-lg rounded-lg transform transition-transform duration-300 hover:scale-105 hover:shadow-xl">
             <FaCheckCircle className="text-3xl sm:text-4xl text-blue-500 mb-4" />
             <h4 className="text-lg sm:text-xl font-semibold mb-4">User-Friendly Interface</h4>
