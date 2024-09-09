@@ -55,12 +55,16 @@ public class CongeService {
                 System.out.println("Found user Id :" + foundUser.getUsername());
                 System.out.println("Found conge Id :" + foundconge.getId());
                 System.out.println("Found conge State :" + foundconge.getState());
-                if (foundUser.getSoldeConge() > foundconge.calculateDaysDifference(foundconge.getStartDate(), foundconge.getEndDate())) {
+                if (foundUser.getSoldeConge() > foundconge.calculateDaysDifference(foundconge.getStartDate(), foundconge.getEndDate()) && foundconge.getState()) {
                     congeRepository.save(foundconge);
                     foundUser.setSoldeConge((int) (foundUser.getSoldeConge() - foundconge.calculateDaysDifference(foundconge.getStartDate(), foundconge.getEndDate())));
                     userRepository.save(foundUser);
                     return ResponseEntity.ok("conge Accepted");
-                } else {
+                } else if ( !foundconge.getState()){
+                    congeRepository.save(foundconge);
+                    return ResponseEntity.ok("conge refuse");
+                }
+                else {
                     return ResponseEntity.ok("Solde conge est insuffisant");
                 }
             }

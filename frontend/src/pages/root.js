@@ -1,51 +1,41 @@
 import React from 'react'
 import appstore from '../assests/root/appstore.png'
 import googleplay from '../assests/root/googleplay.png'
-import island from '../assests/root/island.jpg'
 import Navbar from '../Components/Navbar'
+
 const Root = () => {
   return (
     <div>
       <nav>
         <Navbar />
       </nav>
-    <div className="flex flex-nowrap justify-center padding-x bg-blue-100 gap-80 py-20">
-      <div className=''>
-        <h1 className="font-bold text-2xl">
-          <h1>NUMBER <span className='text-red-500'>ONE</span></h1>
-          <h1 className="text-orange-500">ENTREPRISES CHOICE</h1>
-        </h1>
-        <p className="text-sm">
-          At <span className="text-red-600 font-bold">Leave Management</span>, we're committed to bringing your entreprise<br /> the best leave requests app
-        </p>
-
-        <div className='flex flex-wrap gap-10 py-3'>
-          <img 
-            src={appstore}
-            width={100}
-            height={40}
-          />
-          <img 
-            src={googleplay}
-            width={100}
-            height={40}
-          />
+      <div className="flex flex-wrap justify-center items-center bg-gradient-to-r from-blue-500 via-blue-300 to-blue-100 py-16 px-10">
+        <div className="max-w-md text-center">
+          <h1 className="font-extrabold text-4xl text-gray-800 mb-4">
+            NUMBER <span className="text-red-600">ONE</span>
+          </h1>
+          <h2 className="text-3xl font-semibold text-orange-500 mb-6">
+            ENTERPRISES CHOICE
+          </h2>
+          <p className="text-lg text-gray-700 leading-relaxed mb-6">
+            At <span className="text-red-600 font-bold">Leave Management</span>, we're committed to bringing your enterprise the best leave request app.
+          </p>
+          <div className="flex justify-center gap-6">
+            <img
+              src={appstore}
+              alt="App Store"
+              className="w-32 h-auto hover:scale-105 transition-transform duration-300"
+            />
+            <img
+              src={googleplay}
+              alt="Google Play"
+              className="w-32 h-auto hover:scale-105 transition-transform duration-300"
+            />
+          </div>
         </div>
       </div>
-      <div className='hidden lg:flex py-10 items-center justify-center rounded-full'>
-      <img
-        src={island}
-        width={175}
-        height={40}
-        className='rounded-full'
-        alt='Delivery'
-  />
-      
-      </div>
-      
-
-    </div>
     </div>
   );
 }
+
 export default Root;

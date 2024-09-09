@@ -22,7 +22,8 @@ export default {
         palanquin: ['Palanquin', 'sans-serif'],
         montserrat: ['Montserrat', 'sans-serif'],
         Anton: ['Anton', 'sans-serif'],
-        kanit : ['kanit' , 'sans-serif']
+        kanit : ['kanit' , 'sans-serif'],
+        protest : ['protest-guerrilla' , 'sans-serif']
       },
       colors: {
         'primary': "#ECEEFF",
